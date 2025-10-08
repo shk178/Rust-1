@@ -39,6 +39,7 @@ prints_country(country);         // 원본은 그대로 사용 가능
 - 복사하지 않고 참조만 넘기면 메모리 낭비 없이 사용
 - 반복적으로 사용 시 .clone()보다 효율적
 ```rust
+//fn get_length(input: String) { // Takes ownership of a String
 fn get_length(input: &String) {
     println!("It's {} words long.", input.split_whitespace().count());
 }
@@ -46,6 +47,7 @@ fn main() {
     let mut my_string = String::new();
     for _ in 0..50 {
         my_string.push_str("Here are some more words ");
+        //get_length(my_string.clone()); // gives it a clone every time
         get_length(&my_string); // 참조만 넘김
     }
 }
